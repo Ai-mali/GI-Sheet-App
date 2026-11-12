@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GI Sheet Optimizer</title>
+  <style>
+    :root { --blue:#145ea8; --blue2:#e8f1fb; --line:#d7dee7; --text:#203040; --muted:#667789; --green:#237a4b; --red:#b42318; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:14px "Segoe UI",Arial,sans-serif; color:var(--text); background:#f4f6f8; }
+    header { background:#123b64; color:#fff; padding:22px 30px; }
+    header h1 { margin:0 0 5px; font-size:26px; }
+    header p { margin:0; color:#d5e5f5; }
+    main { max-width:1420px; margin:0 auto; padding:22px; }
+    .tabs { display:flex; gap:8px; margin-bottom:16px; }
+    .tab { border:1px solid var(--line); background:#fff; padding:11px 20px; border-radius:8px; cursor:pointer; font-weight:600; }
+    .tab.active { background:var(--blue); color:white; border-color:var(--blue); }
+    .panel { display:none; } .panel.active { display:block; }
+    .grid { display:grid; grid-template-columns:320px 1fr; gap:16px; align-items:start; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px; margin-bottom:16px; box-shadow:0 2px 6px #19344a0d; }
+    h2 { font-size:17px; margin:0 0 14px; } h3 { font-size:15px; margin:18px 0 10px; }
+    label { display:block; font-weight:600; margin:10px 0 5px; }
+    input, select { width:100%; padding:8px; border:1px solid #b9c4cf; border-radius:5px; background:#fff; }
+    .widths { display:flex; flex-wrap:wrap; gap:7px; }
+    .widths label { margin:0; font-weight:400; border:1px solid var(--line); padding:7px 9px; border-radius:5px; background:#fafbfd; }
+    .widths input { width:auto; }
+    button { border:0; border-radius:5px; padding:9px 13px; cursor:pointer; font-weight:600; }
+    .primary { background:var(--blue); color:#fff; } .secondary { background:#e9eef3; color:#203040; }
+    .danger { background:#fff0ef; color:var(--red); }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+    table { width:100%; border-collapse:collapse; } th,td { border-bottom:1px solid var(--line); padding:9px 7px; text-align:left; vertical-align:middle; } th { background:#eef4fa; font-weight:700; } .num { text-align:right; }
+    .orders input { min-width:75px; } .orders td:last-child { width:40px; }
+    .notice { padding:10px 12px; background:#fff9e6; border:1px solid #f1d27b; border-radius:6px; color:#705400; }
+    .summary { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:14px; } .metric { background:var(--blue2); border-radius:7px; padding:12px; } .metric b { display:block; font-size:20px; color:var(--blue); } .metric span { color:var(--muted); font-size:12px; }
+    .plan { border:1px solid var(--line); border-radius:8px; padding:12px; margin-top:12px; } .plan.best { border:2px solid var(--green); } .plan-title { display:flex; justify-content:space-between; gap:10px; } .badge { background:#d8f1e2; color:var(--green); padding:3px 7px; border-radius:99px; font-size:11px; }
+    .bar { display:flex; height:26px; margin-top:10px; border:1px solid #b9c4cf; overflow:hidden; background:#f7f8fa; } .cut { background:#76b9e8; border-right:2px solid #bd3428; display:flex; align-items:center; justify-content:center; font-size:11px; overflow:hidden; white-space:nowrap; } .waste { flex:1; background:#e9edf1; }
+    .empty { color:var(--muted); padding:22px 0; text-align:center; }
+    @media(max-width:950px){ .grid{grid-template-columns:1fr;} .summary{grid-template-columns:repeat(2,1fr);} }
+    @media print { header,.tabs,.no-print { display:none!important; } body,main { background:#fff; padding:0; } .card { box-shadow:none; } }
+  </style>
+</head>
+<body>
+  <header><h1>GI Sheet Optimizer</h1><p>Plan cable-tray body and cover strips with clear, traceable cutting patterns.</p></header>
+  <main>
+    <div class="tabs"><button class="tab active" data-tab="1">Combined</button><button class="tab" data-tab="2">Split by thickness</button></div>
+    <section id="tab1" class="panel active"></section>
+    <section id="tab2" class="panel"></section>
+  </main>
+  <script src="../src/optimizer.js"></script>
+  <script src="../src/project.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>

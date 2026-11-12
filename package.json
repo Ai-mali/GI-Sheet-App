@@ -1,0 +1,34 @@
+{
+  "name": "gi-sheet-optimizer-new",
+  "productName": "GI Sheet Optimizer",
+  "version": "2.0.0",
+  "description": "Cable tray GI sheet cutting optimizer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis portable --publish never --config.win.signAndEditExecutable=false"
+  },
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.gisheet.optimizer.new",
+    "productName": "GI Sheet Optimizer",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "src/**/*", "renderer/**/*", "README.md"],
+    "win": { "target": ["nsis", "portable"] },
+    "fileAssociations": [{
+      "ext": "gisheet",
+      "name": "GI Sheet Project",
+      "description": "GI Sheet Optimizer Project",
+      "role": "Editor"
+    }],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "portable": { "artifactName": "GI-Sheet-Optimizer-New-Portable.exe" },
+    "publish": null
+  }
+}
